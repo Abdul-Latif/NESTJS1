@@ -18,16 +18,16 @@ export class PaymentService {
   }
 
   async findOne(id: number) {
-    return this.paymentRepsository.findOneBy({ id });
+    return await this.paymentRepsository.findOneBy({ id });
   }
 
   async update(id: number, updatePaymentDto: UpdatePaymentDto) {
-    await this.paymentRepsository.update(id, updatePaymentDto);
-    return this.paymentRepsository.findOneBy({ id });
+    const res = await this.paymentRepsository.update(id, updatePaymentDto);
+    return res;
   }
 
   async remove(id: number) {
-    await this.paymentRepsository.delete({ id });
+    await this.paymentRepsository.delete(id);
     return `${id} is removed`;
   }
 }

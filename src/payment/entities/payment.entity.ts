@@ -1,3 +1,4 @@
+import { IdName, Meta } from 'src/commonUtilits/CommonBaseEntity';
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
@@ -10,4 +11,8 @@ export class Payment {
 
     @Column()
     method: string;
+
+    @Column(() => Meta)
+    meta: Meta;
+
 }

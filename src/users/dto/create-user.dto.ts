@@ -1,7 +1,21 @@
+import { IsEmail, IsNotEmpty, IsNumber, IsString } from "class-validator";
+
 export class CreateUserDto {
-    amount: number;
+    @IsNumber()
+    @IsNotEmpty()
+    amounts: number;
+
+    @IsString()
+    @IsNotEmpty()
     method: string;
+
+    @IsString()
+    @IsNotEmpty()
     status: string;
-    CretedAt: Date;
-    UpdatedAt: Date;
+
+    @IsEmail()
+    email: string;
+
+    @IsString()
+    cyd: string;
 }

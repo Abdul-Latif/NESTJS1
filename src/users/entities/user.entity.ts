@@ -1,25 +1,27 @@
+import { IdName, Meta } from 'src/commonUtilits/CommonBaseEntity';
 import {
     Entity,
     PrimaryGeneratedColumn,
     Column,
-    CreateDateColumn,
-    UpdateDateColumn,
-    DeleteDateColumn,
+
 } from 'typeorm';
 
-@Entity()
-export class User {
 
+@Entity()
+export class User extends IdName {
     @PrimaryGeneratedColumn()
     id: number;
     @Column('numeric')
-    amount: number;
+    amounts: number;
     @Column({ length: 20 })
     method: string;
     @Column({ default: 'pending' })
     status: string;
-    @CreateDateColumn()
-    CreatedAt: Date;
-    @UpdateDateColumn()
-    UpdatedAt: Date;
+    @Column()
+    email: string;
+    @Column(() => Meta) // embeded instead of extend because class can extend one class only 
+    data: Meta;
+    @Column({ nullable: true })
+    cyd: string;
+
 }
